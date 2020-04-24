@@ -123,6 +123,16 @@ input {
     box-shadow: 0 0 4px black;
 }
 
+#borderBottomEffect {
+    background-color: #212427;
+    transition: .5s all ease-in-out;
+    width: 0;
+    height: 4px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
 button {
     position: absolute;
     margin: auto;
