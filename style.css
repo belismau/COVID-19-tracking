@@ -123,16 +123,6 @@ input {
     box-shadow: 0 0 4px black;
 }
 
-#borderBottomEffect {
-    background-color: #1c1e20;
-    transition: .5s all ease-in-out;
-    width: 0;
-    height: 4px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-}
-
 button {
     position: absolute;
     margin: auto;
@@ -141,10 +131,10 @@ button {
     right: 5px;
     font-size: 20px;
     border: none;
-    color: #1c1e2096;
     outline: none;
     cursor: pointer;
     transition: .5s all ease-in-out;
+    color: #9b9b9b;
     background-color: transparent;
 }
 

@@ -1,0 +1,60 @@
+/* Main --------------------------------------------------------------------------------------------------------- */
+
+body {
+    background-color: #ffffff;
+}
+
+/* First side of the web app ------------------------------------------------------------------------------------ */
+
+#firstSide {
+    background-color: #ffffff;
+    color: #1c1e20;
+}
+
+.content > img {
+    box-shadow: none;
+}
+
+.content > p {
+    text-shadow: none;
+}
+
+.content > h3 {
+    text-shadow: none;
+}
+
+.content > #block > a {
+    border: 2px solid #1c1e20;
+    color: #1c1e20;
+    box-shadow: none;
+}
+
+.content > #block > a:hover {
+    background-color: #1c1e20;
+    border: 2px solid #1c1e20;
+    color: #ffffff;
+}
+
+/* Switcher between dark and light mode ------------------------------------------------------------------------------------ */
+
+#switcher {
+    background-color: #1c1e20;
+    box-shadow: none;
+}
+
+#roundButton {
+    background-color: #ffffff;
+    border: 3px solid #1c1e20;
+}
+
+/* Input-container --------------------------------------------------------------------------------------------------- */
+
+#inputContainer {
+    background-color: #e4e4e4;
+}
+
+input {
+    border-bottom: 4px solid #c5c5c5;
+    color: #1c1e20;
+    box-shadow: none;
+}
