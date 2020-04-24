@@ -1,3 +1,5 @@
+/* Main --------------------------------------------------------------------------------------------------------- */
+
 @import url('https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap');
 
 * {
@@ -10,6 +12,8 @@ body {
     padding: 0;
     background-color: #ffffff;
 }
+
+/* First side of the web app ------------------------------------------------------------------------------------ */
 
 #firstSide {
     background-color: #1c1e20;
@@ -68,18 +72,7 @@ body {
     color: #1c1e20;
 }
 
-@media screen and (max-width: 700px) {
-    #firstSide {
-        height: auto;
-        border-left: 0;
-    }
-    .content {
-        margin: 60px 40px;
-    }
-}
-
-
-/* Switcher between dark and light mode */
+/* Switcher between dark and light mode ------------------------------------------------------------------------------------ */
 
 #switcher {
     position: absolute;
@@ -104,9 +97,78 @@ body {
     transition: .2s all ease-in-out;
 }
 
+/* Input-container --------------------------------------------------------------------------------------------------- */
+
+#inputContainer {
+    padding: 100px 6vw;
+    background-color: #141516;
+}
+
+#inputContainer > div {
+    position: relative;
+    display: inline-block;
+}
+
+input {
+    position: relative;
+    outline: none;
+    border: none;
+    padding: 15px;
+    margin: 0;
+    border-radius: 1px;
+    width: 350px;
+    font-size: 14px;
+    border-bottom: 4px solid #1c1e2077;
+    color: #1c1e20a6;
+    box-shadow: 0 0 4px black;
+}
+
+#borderBottomEffect {
+    background-color: #1c1e20;
+    transition: .5s all ease-in-out;
+    width: 0;
+    height: 4px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+button {
+    position: absolute;
+    margin: auto;
+    top: 44%;
+    transform: translateY(-44%);
+    right: 5px;
+    font-size: 20px;
+    border: none;
+    color: #1c1e2096;
+    outline: none;
+    cursor: pointer;
+    transition: .5s all ease-in-out;
+    background-color: transparent;
+}
+
+/* The responsive part ---------------------------------------------------------------------------------------------- */
+
 @media screen and (max-width: 700px) {
+    #firstSide {
+        height: auto;
+        border-left: 0;
+    }
+    .content {
+        margin: 60px 40px;
+    }
     #switcher {
         right: 40px;
         top: 30px;
+    }
+    #inputContainer {
+        padding: 60px 40px;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    #inputContainer > div, input {
+        width: 100%;
     }
 }
