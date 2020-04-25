@@ -17,4 +17,7 @@ document.getElementsByTagName('input')[0].addEventListener('focusout', function(
     document.getElementsByTagName('button')[0].style.color = '#9b9b9b';
 });
 
-$('')
+$(document).on('click', '.countryBox', function() {
+    $('#countryInput').val($(this).find('p').text())
+    $('#countryList div').remove()
+});

@@ -13,7 +13,7 @@ function getData() {
                 let countryCode = data[i].ISO2
                 let image = getImage(countryCode)
                 let name = countryName
-                let content = '<div> <img src="' + image + '"> <p>' + name + '</p> </div>'
+                let content = '<div class="countryBox"> <img src="' + image + '"> <p>' + name + '</p> </div>'
                 $('#countryList').append(content)
             }
         }
@@ -22,7 +22,8 @@ function getData() {
     });
 };
 
-function showCountriesByInput() {
+function addCountryToInput() {
+
 }
 
 function getImage(countryCode) {
