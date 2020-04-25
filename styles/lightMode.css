@@ -57,8 +57,23 @@ input {
     border-bottom: 4px solid #c5c5c5;
     color: #7c7c7c;
     box-shadow: none;
+    background-color: white;
 }
 
 #borderBottomEffect {
     background-color: #7c7c7c;
+}
+
+
+/* Generated country-elements from dropdown ---------------------------------------------------------------------------------- */
+
+#countryList > div {
+    background-color: #f3f3f3;
+    color: #646464;
+    border-bottom: 1px solid #a5a5a5;
+}
+
+#countryList > div:hover {
+    background-color: #d6d6d6;
+    color: #1c1e20;
 }

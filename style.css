@@ -119,7 +119,8 @@ input {
     width: 350px;
     font-size: 14px;
     border-bottom: 4px solid #1c1e2077;
-    color: #1c1e20a6;
+    color: white;
+    background-color: #1c1e20;
     box-shadow: 0 0 4px black;
 }
 
@@ -188,18 +189,18 @@ button {
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: #d3d3d3;
-    color: #646464;
+    background-color: #232527;
+    color: #a5a5a5;
     margin: 0;
     padding: 20px;
-    border-bottom: 1px solid #a5a5a5;
+    border-bottom: 1px solid #646464;
     cursor: pointer;
     transition: .3s all ease-in-out;
 }
 
 #countryList > div:hover {
-    background-color: #a3a3a3;
-    color: #1c1e20;
+    background-color: #181a1b;
+    color: white;
 }
 
 #countryList > div > p {

@@ -2,6 +2,7 @@ import Theme from './js/Theme.js';
 import getData from './js/GetData.js';
 
 Theme()
+getData()
 
 $('#countryInput').on('input', function() {
     getData()
