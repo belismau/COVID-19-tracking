@@ -2,6 +2,7 @@
 <html>
     <head>
         <title> COVID-19 tracking </title>
+        <link rel="icon" href="img/covid.png">
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <meta charset="UTF-8">
@@ -24,14 +25,16 @@
 
         <section id="inputContainer">
             <div>
-                <input type="text" id="movie" placeholder="What country do you search for?">
+                <input type="text" list="countryList" id="countryInput" placeholder="What country do you search for?">
                 <button type="submit">
                     <i class="fa fa-search"></i>
                 </button>
                 <div id="borderBottomEffect"></div>
             </div>
+            <div id="countryList"></div>
         </section>
 
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
         <script type="module" src="script.js"></script>
     </body>
 </html>

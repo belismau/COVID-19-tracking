@@ -106,7 +106,7 @@ body {
 
 #inputContainer > div {
     position: relative;
-    display: inline-block;
+    max-width: 350px;
 }
 
 input {
@@ -158,6 +158,10 @@ button {
     .content {
         margin: 60px 40px;
     }
+    .content > h3 {
+        font-size: 30px;
+        max-width: 400px;
+    }
     #switcher {
         right: 40px;
         top: 30px;
@@ -171,4 +175,38 @@ button {
     #inputContainer > div, input {
         width: 100%;
     }
+}
+
+/* Generated country-elements from dropdown ---------------------------------------------------------------------------------- */
+
+#countryList {
+    max-height: 180px;
+    overflow: scroll;
+}
+
+#countryList > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #d3d3d3;
+    color: #646464;
+    margin: 0;
+    padding: 20px;
+    border-bottom: 1px solid #a5a5a5;
+    cursor: pointer;
+    transition: .3s all ease-in-out;
+}
+
+#countryList > div:hover {
+    background-color: #a3a3a3;
+    color: #1c1e20;
+}
+
+#countryList > div > p {
+    margin: 0 0 0 10px;
+}
+
+#countryList > div > img {
+    width: 27px;
+    height: 27px;
 }
