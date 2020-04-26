@@ -47,6 +47,28 @@ body {
     border: 3px solid #1c1e20;
 }
 
+/* Global corona info --------------------------------------------------------------------------------------------------- */
+
+#globalInfo {
+    box-shadow: none;
+    background-color: #c9c9c9;
+}
+
+#globalInfo > div {
+    background-color: white;
+}
+
+#globalInfo > div > p {
+    color: #979797;
+    text-shadow: none;
+}
+
+#globalInfo > div > h3 {
+    background-color: #e7e7e7;
+    color: #979797;
+    box-shadow: none;
+}
+
 /* Input-container --------------------------------------------------------------------------------------------------- */
 
 #inputContainer {
@@ -63,7 +85,6 @@ input {
 #borderBottomEffect {
     background-color: #7c7c7c;
 }
-
 
 /* Generated country-elements from dropdown ---------------------------------------------------------------------------------- */
 
