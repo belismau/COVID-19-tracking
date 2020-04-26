@@ -1,8 +1,9 @@
-import Theme from './js/Theme.js';
-import getData from './js/GetData.js';
+import theme from './js/theme.js';
+import getData from './js/getData.js';
 import globalInfo from './js/global.js';
+import validateInput from './js/validateInput.js';
 
-Theme()
+theme()
 globalInfo()
 getData()
 
@@ -28,5 +29,9 @@ $(document).on('click', '.countryBox', function() {
 $('#block a').on('click', function() {
     $('html, body').animate({
          scrollTop: $("#globalInfo").offset().top
-    }, 1000);
+    }, 800);
+});
+
+$('button').on('click', function() {
+    validateInput()
 });
