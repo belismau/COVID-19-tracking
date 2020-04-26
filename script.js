@@ -24,3 +24,9 @@ $(document).on('click', '.countryBox', function() {
     $('#countryInput').val($(this).find('p').text())
     $('#countryList div').remove()
 });
+
+$('#block a').on('click', function() {
+    $('html, body').animate({
+         scrollTop: $("#globalInfo").offset().top
+    }, 1000);
+});
