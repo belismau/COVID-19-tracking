@@ -274,3 +274,22 @@ button {
     width: 27px;
     height: 27px;
 }
+
+/* Country Information Generated ------------------------------------------------------------------------------------------ */
+
+#countryInfo {
+    background-color: #eeeeee;
+    padding: 6vw;
+}
+
+#countryInfo > h1 {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #d8d8d8;
+}
+
+#countryInfo > p {
+    margin: 0 0 10px 0;
+    background-color: #e4e4e4;
+    padding: 20px;
+}
