@@ -154,7 +154,7 @@ body {
     }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 300px) {
     #globalInfo {
         grid-template-columns: 1fr;
     }
@@ -307,10 +307,10 @@ button {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     gap: 2px;
-    background-color: #7a7a7a;
+    background-color: #424242;
     text-align: center;
     max-width: 600px;
-    box-shadow: 0 0 1px black;
+    box-shadow: 0 0 3px black;
     margin-bottom: 70px;
 }
 
@@ -318,13 +318,28 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #121314;
-    padding: 10px;
+    background-color: #151618;
+    padding: 15px;
+}
+
+.table > div > img {
+    height: 35px;
+    width: 35px;
 }
 
 @media screen and (max-width: 700px) {
     #countryInfo {
         padding: 60px 40px;
+    }
+
+    #countryInfo div:last-child {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            'countryName total'
+            'confirmed confirmedTotal'
+            'deaths deathsTotal'
+            'recovered recoveredTotal'
+            'active activeTotal'
     }
     .table {
         grid-template-columns: 1fr 1fr 1fr;
