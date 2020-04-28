@@ -56,7 +56,7 @@ function getDateFormat(date) {
 
 function addDescriptionRow(classNr) {
     $('.table:nth-of-type(' + classNr + ')').append('<div><p>Sweden</p></div>')
-    $('.table:nth-of-type(' + classNr + ')').append('<div><p style="color: #d0d045"></p> Confirmed </p></div>')
+    $('.table:nth-of-type(' + classNr + ')').append('<div><p style="color: #d0d045"> Confirmed </p></div>')
     $('.table:nth-of-type(' + classNr + ')').append('<div><p style="color: #e84a4a"> Deaths </p></div>')
     $('.table:nth-of-type(' + classNr + ')').append('<div><p style="color: #2f962f"> Recovered </p></div>')
     $('.table:nth-of-type(' + classNr + ')').append('<div><p> Active </p></div>')

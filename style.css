@@ -322,12 +322,62 @@ button {
     padding: 10px;
 }
 
-
 @media screen and (max-width: 700px) {
     #countryInfo {
         padding: 60px 40px;
     }
     .table {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas:
+            'countryName total new'
+            'confirmed confirmedTotal confirmedNew'
+            'deaths deathsTotal deathsNew'
+            'recovered recoveredTotal recoveredNew'
+            'active activeTotal activeNew'
+    }
+    .table > div:nth-child(1) {
+        grid-area: countryName;
+    }
+    .table > div:nth-child(2) {
+        grid-area: confirmed;
+    }
+    .table > div:nth-child(3) {
+        grid-area: deaths;
+    }
+    .table > div:nth-child(4) {
+        grid-area: recovered;
+    }
+    .table > div:nth-child(5) {
+        grid-area: active;
+    }
+    .table > div:nth-child(6) {
+        grid-area: total;
+    }
+    .table > div:nth-child(7) {
+        grid-area: confirmedTotal;
+    }
+    .table > div:nth-child(8) {
+        grid-area: deathsTotal;
+    }
+    .table > div:nth-child(9) {
+        grid-area: recoveredTotal;
+    }
+    .table > div:nth-child(10) {
+        grid-area: activeTotal;
+    }
+    .table > div:nth-child(11) {
+        grid-area: new;
+    }
+    .table > div:nth-child(12) {
+        grid-area: confirmedNew;
+    }
+    .table > div:nth-child(13) {
+        grid-area: deathsNew;
+    }
+    .table > div:nth-child(14) {
+        grid-area: recoveredNew;
+    }
+    .table > div:nth-child(15) {
+        grid-area: activeNew;
     }
 }
