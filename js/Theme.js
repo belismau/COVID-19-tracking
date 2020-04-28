@@ -7,7 +7,6 @@ function theme() {
                 changeToLightTheme()
         } else {
                 roundButton.style.left = '0';
-                removeLightTheme()
         }
     } else {
         localStorage.setItem('darkmode', 'true')
