@@ -98,3 +98,23 @@ input {
     background-color: #d6d6d6;
     color: #1c1e20;
 }
+
+/* Country Information Generated ------------------------------------------------------------------------------------------ */
+
+#countryInfo {
+    background-color: #cecece;
+    color: #686868;
+}
+
+#countryInfo > h1 {
+    border-bottom: 1px solid #797979;
+}
+
+.table {
+    background-color: #cfcfcf;
+    box-shadow: none;
+}
+
+.table > div {
+    background-color: #b9b9b9;
+}
