@@ -56,17 +56,17 @@ function getDateFormat(date) {
 
 function addDescriptionRow(classNr) {
     $('.table:nth-of-type(' + classNr + ')').append('<div><p>Sweden</p></div>')
-    $('.table:nth-of-type(' + classNr + ')').append('<div><p> Confirmed </p></div>')
-    $('.table:nth-of-type(' + classNr + ')').append('<div><p> Deaths </p></div>')
-    $('.table:nth-of-type(' + classNr + ')').append('<div><p> Recovered </p></div>')
+    $('.table:nth-of-type(' + classNr + ')').append('<div><p style="color: #d0d045"></p> Confirmed </p></div>')
+    $('.table:nth-of-type(' + classNr + ')').append('<div><p style="color: #e84a4a"> Deaths </p></div>')
+    $('.table:nth-of-type(' + classNr + ')').append('<div><p style="color: #2f962f"> Recovered </p></div>')
     $('.table:nth-of-type(' + classNr + ')').append('<div><p> Active </p></div>')
 }
 
 function addTotalRow(classNr, data, i) {
     $('.table:nth-of-type(' + classNr + ')').append('<div><p> Total </p></div>')
-    $('.table:nth-of-type(' + classNr + ')').append('<div><p>' + data[i].Confirmed + '</p></div>')
-    $('.table:nth-of-type(' + classNr + ')').append('<div><p>' + data[i].Deaths + '</p></div>')
-    $('.table:nth-of-type(' + classNr + ')').append('<div><p>' + data[i].Recovered + '</p></div>')
+    $('.table:nth-of-type(' + classNr + ')').append('<div><p style="color: #d0d045">' + data[i].Confirmed + '</p></div>')
+    $('.table:nth-of-type(' + classNr + ')').append('<div><p style="color: #e84a4a">' + data[i].Deaths + '</p></div>')
+    $('.table:nth-of-type(' + classNr + ')').append('<div><p style="color: #2f962f">' + data[i].Recovered + '</p></div>')
     $('.table:nth-of-type(' + classNr + ')').append('<div><p>' + data[i].Active + '</p></div>')
 }
 
@@ -77,9 +77,9 @@ function addNewRow(classNr, data, i) {
     let newActive = (data[i].Active) - (data[i - 1].Active)
 
     $('.table:nth-of-type(' + classNr + ')').append('<div><p> New </p></div>')
-    $('.table:nth-of-type(' + classNr + ')').append('<div><p>' + newConfirmed + '</p></div>')
-    $('.table:nth-of-type(' + classNr + ')').append('<div><p>' + newDeaths + '</p></div>')
-    $('.table:nth-of-type(' + classNr + ')').append('<div><p>' + newRecovered + '</p></div>')
+    $('.table:nth-of-type(' + classNr + ')').append('<div><p style="color: #d0d045">' + newConfirmed + '</p></div>')
+    $('.table:nth-of-type(' + classNr + ')').append('<div><p style="color: #e84a4a">' + newDeaths + '</p></div>')
+    $('.table:nth-of-type(' + classNr + ')').append('<div><p style="color: #2f962f">' + newRecovered + '</p></div>')
     $('.table:nth-of-type(' + classNr + ')').append('<div><p>' + newActive + '</p></div>')
 }
 

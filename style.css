@@ -247,7 +247,6 @@ button {
     height: 180px;
     overflow: scroll;
     background-color: #232527;
-    box-shadow: 0 0 1px #bdbdbd;
 }
 
 #emptyBox {
