@@ -244,8 +244,22 @@ button {
 /* Generated country-elements from dropdown ---------------------------------------------------------------------------------- */
 
 #countryList {
-    max-height: 180px;
+    height: 180px;
     overflow: scroll;
+    background-color: #232527;
+    box-shadow: 0 0 1px #bdbdbd;
+}
+
+#emptyBox {
+    height: 180px;
+    width: 350px;
+    background-color: #f3f3f3;
+    display: flex;
+    align-items: center;
+}
+
+#emptyBox > p {
+    margin: 0;
 }
 
 #countryList > div {

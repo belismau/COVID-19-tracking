@@ -7,6 +7,7 @@ function validateInput() {
         for (let i = 0; i < data.length; i++) {
             if (input == (data[i].Country).toLowerCase()) {
                 showCountryInfo(data[i].Slug)
+                $('#countryInput').val('');
                 return
             }
         }
@@ -25,7 +26,7 @@ function showCountryInfo(name) {
         $('<section id="countryInfo"></section>').insertAfter('#inputContainer')
         let classNr = 1
         for (let i = (data.length - 1); i >= 0; i--) {
-            let date = (data[i].Date).slice(0, 10)
+            let date = getDateFormat(data[i].Date)
             $('#countryInfo').append('<h1>' + date + '</h1>')
             $('#countryInfo').append('<div class="table"></div>')
             addDescriptionRow(classNr)
@@ -42,6 +43,16 @@ function showCountryInfo(name) {
         console.log(data)
     });
 };
+
+function getDateFormat(date) {
+    let dateFormated = date.split("T")[0];
+    let parts = dateFormated.split('-');
+    let year = parseInt(parts[0], 10)
+    let month = parseInt(parts[1], 10)
+    let day = parseInt(parts[2], 10)
+    let monthsList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    return day + ' ' + monthsList[month - 1] + ' ' + year
+}
 
 function addDescriptionRow(classNr) {
     $('.table:nth-of-type(' + classNr + ')').append('<div><p>Sweden</p></div>')

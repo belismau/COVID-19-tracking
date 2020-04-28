@@ -88,6 +88,11 @@ input {
 
 /* Generated country-elements from dropdown ---------------------------------------------------------------------------------- */
 
+#countryList {
+    background-color: #f3f3f3;
+    box-shadow: 0 0 1px #bdbdbd;
+}
+
 #countryList > div {
     background-color: #f3f3f3;
     color: #646464;

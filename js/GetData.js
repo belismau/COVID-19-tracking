@@ -17,6 +17,7 @@ function getData() {
                 $('#countryList').append(content)
             }
         }
+
     }).fail(function(data) {
         console.log(data)
     });
