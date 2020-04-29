@@ -182,7 +182,7 @@ input {
     width: 350px;
     font-size: 14px;
     border-bottom: 4px solid #1c1e2077;
-    color: white;
+    color: #a5a5a5;
     background-color: #1c1e20;
     box-shadow: 0 0 4px black;
 }
@@ -210,6 +210,11 @@ button {
     transition: .5s all ease-in-out;
     color: #9b9b9b;
     background-color: transparent;
+}
+
+.fa-check-square {
+    color: rgb(24, 170, 24);
+    margin-top: 2px;
 }
 
 /* The responsive part ---------------------------------------------------------------------------------------------- */
@@ -249,19 +254,7 @@ button {
     background-color: #232527;
 }
 
-#emptyBox {
-    height: 180px;
-    width: 350px;
-    background-color: #f3f3f3;
-    display: flex;
-    align-items: center;
-}
-
-#emptyBox > p {
-    margin: 0;
-}
-
-#countryList > div {
+#countryList > .countryBox {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -274,16 +267,16 @@ button {
     transition: .3s all ease-in-out;
 }
 
-#countryList > div:hover {
+#countryList > .countryBox:hover {
     background-color: #181a1b;
     color: white;
 }
 
-#countryList > div > p {
+#countryList > .countryBox > p {
     margin: 0 0 0 10px;
 }
 
-#countryList > div > img {
+#countryList > .countryBox > img {
     width: 27px;
     height: 27px;
 }

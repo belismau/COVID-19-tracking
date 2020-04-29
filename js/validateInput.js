@@ -1,3 +1,5 @@
+import removeInfoIfCountryChosen from './getData.js';
+
 function validateInput() {
     let input = ($('#countryInput').val()).toLowerCase()
     $.ajax({
@@ -8,6 +10,7 @@ function validateInput() {
             if (input == (data[i].Country).toLowerCase()) {
                 showCountryInfo(data[i].Slug, data[i].ISO2)
                 $('#countryInput').val('');
+                removeInfoIfCountryChosen()
                 return
             }
         }

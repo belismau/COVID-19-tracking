@@ -1,5 +1,6 @@
 import theme from './js/theme.js';
 import getData from './js/getData.js';
+import addInfoIfCountryChosen from './js/getData.js';
 import globalInfo from './js/global.js';
 import validateInput from './js/validateInput.js';
 
@@ -24,6 +25,7 @@ document.getElementsByTagName('input')[0].addEventListener('focusout', function(
 $(document).on('click', '.countryBox', function() {
     $('#countryInput').val($(this).find('p').text())
     $('#countryList div').remove()
+    addInfoIfCountryChosen($(this).find('p').text())
 });
 
 $('#block a').on('click', function() {
