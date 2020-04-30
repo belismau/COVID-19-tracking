@@ -86,6 +86,11 @@ input {
     background-color: #7c7c7c;
 }
 
+.fa-check-square {
+    color: #40d340;
+    margin-top: 2px;
+}
+
 /* Generated country-elements from dropdown ---------------------------------------------------------------------------------- */
 
 #countryList {
@@ -93,33 +98,55 @@ input {
     box-shadow: 0 0 1px #bdbdbd;
 }
 
-#countryList > div {
+#countryList > .countryBox {
     background-color: #f3f3f3;
     color: #646464;
     border-bottom: 1px solid #a5a5a5;
 }
 
-#countryList > div:hover {
+#countryList > .countryBox:hover {
     background-color: #d6d6d6;
     color: #1c1e20;
+}
+
+/* If several provinces  ----------------------------------------------------------------------------------------------- */
+
+#provinceChooser {
+    background-color: #f0f0f0;
+}
+
+#provinceChooser > h2 {
+    color: #6e6e6e;
+    background-color: #f0f0f0;
+}
+
+#provinceChooser > div > p {
+    color: #6e6e6e;
+    background-color: #f0f0f0;
+}
+
+#provinceChooser > div > p:hover {
+    color: black;
 }
 
 /* Country Information Generated ------------------------------------------------------------------------------------------ */
 
 #countryInfo {
-    background-color: #cecece;
-    color: #686868;
+    background-color: #dbdbdb;
+    color: #9b9b9b;
 }
 
-#countryInfo > h1 {
-    border-bottom: 1px solid #797979;
+#countryInfo > h2 {
+    background-color: #d1d1d1;
+    color: #9c9c9c;
+    border-bottom: 2px solid #a5a5a5;
 }
 
 .table {
-    background-color: #cfcfcf;
+    background-color: #c9c9c9;
     box-shadow: none;
 }
 
 .table > div {
-    background-color: #b9b9b9;
+    background-color: #e4e4e4;
 }

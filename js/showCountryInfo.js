@@ -1,6 +1,7 @@
 
 function showCountryInfo(name, countryCode) {
     $('#countryInfo').remove()
+    $('#provinceChooser').remove()
     $.ajax({
         url: 'https://api.covid19api.com/live/country/' + name + '/status/confirmed',
         dataType: 'JSON'
