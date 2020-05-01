@@ -112,7 +112,7 @@ body {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     box-shadow: 0 0 3px black;
     gap: 1px;
-    background-color: #646464;
+    background-color: #1c1e20;
 }
 
 #globalInfo > div {

@@ -31,7 +31,6 @@ function addInfoIfCountryChosen(countryName) {
     $('#countryList').css('justifyContent', 'center')
     $('#countryList').append('<div style="display: flex; flex-direction: row;"></div>')
     $('#countryList').find('div').append('<i style="font-size: 18px;" class="fa fa-check-square"></i> <p style="color: #a5a5a5; margin: 0 0 0 6px; font-size: 18px">' + countryName + '</p>')
-
 }
 
 function removeInfoIfCountryChosen() {
