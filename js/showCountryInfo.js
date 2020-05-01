@@ -1,7 +1,9 @@
+let positionList = []
 
 function showCountryInfo(name, countryCode) {
     $('#countryInfo').remove()
     $('#provinceChooser').remove()
+    positionList = []
     $.ajax({
         url: 'https://api.covid19api.com/live/country/' + name + '/status/confirmed',
         dataType: 'JSON'
@@ -76,8 +78,6 @@ function showByProvince(data, countryCode, provinceList) {
                 provinceIndex.push(i)
             }
         }
-        
-        console.log(provinceIndex)
 
         for (let z = 0; z < provinceIndex.length; z++) {
             let date = getDateFormat(data[provinceIndex[z]].Date)
@@ -89,7 +89,9 @@ function showByProvince(data, countryCode, provinceList) {
             addTotalRow(data, provinceIndex[z])
             addNewRowProvince(data, provinceIndex[z], provinceIndex[z + 1])
         }
-    }  
+    }
+    
+    getPosition()
 }
 
 function createProvinceChooser(provinceList, countryName) {
@@ -103,6 +105,64 @@ function createProvinceChooser(provinceList, countryName) {
             $('#provinceChooser').append('<div> <p>' + countryName + '</p> </div>')
         }
     }
+}
+
+$(document).on('click', '#provinceChooser div p', function() {
+    let thisP = $(this).text()
+    $("#countryInfo h2").each(function() {
+        if ($(this).text() == thisP) {
+            scrollTo($(this))
+        }
+    })
+});
+
+$(document).on('scroll', function() {
+    let scrollTop = $(this).scrollTop()
+
+    for (let i = 0; i < positionList.length; i++) {
+        if (scrollTop < positionList[0]) {
+            removeFixedHeader()
+            break
+        } else if ( (positionList[i + 1] == undefined) || (scrollTop >= positionList[i] && scrollTop < positionList[i + 1]) ) {
+            addFixedHeader(i)
+            break
+        } else {
+            continue
+        }
+    }
+});
+
+function removeFixedHeader() {
+    $('#countryInfo h2').css('position', 'static')
+    $('#countryInfo h1').css('padding-top', '0')
+}
+
+function addFixedHeader(index) {
+    $('#countryInfo h2').css('position', 'static')
+    $('#countryInfo h1').css('padding-top', '0')
+    
+    let element = $('#countryInfo h2:nth-of-type(' + (index + 1) + ')')
+
+    if ($(window).width() > 700) {
+        element.css('left', '6vw')
+        element.css('width', '100%')
+    } else {
+        element.css('left', '40px')
+        element.css('right', '40px')
+        element.css('width', 'auto')
+    }
+
+    element.css('position', 'fixed')
+    element.css('top', '0')
+    element.css('padding', '20px')
+    element.next().css('padding-top', '102px')
+}
+
+function getPosition() {
+    $("#countryInfo h2").each(function() {
+        positionList.push($(this).offset().top)
+    })
+    console.log(positionList)
 }
 
 function showWithoutProvince(data, countryCode) {
@@ -136,10 +196,10 @@ function addDescriptionRow(countryCode) {
     let confirmed = 'Confirmed'
     let recovered = 'Recovered'
     if ($(window).width() <= 450) {
+        confirmed = 'Confir.'
+        recovered = 'Recov.'
         if (nr == 0) {
             nr = 1
-            confirmed = 'Confir.'
-            recovered = 'Recov.'
             $('#countryInfo').prepend('<p style="margin: 0 0 50px 0; color: #2f962f;">*Recov. = Recovered</p>')
             $('#countryInfo').prepend('<p style="margin: 10px 0 0 0">*Confir. = Confirmed</p>')
         }
