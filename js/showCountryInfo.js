@@ -81,9 +81,9 @@ function showByProvince(data, countryCode, provinceList) {
 
         for (let z = 0; z < provinceIndex.length; z++) {
             let date = getDateFormat(data[provinceIndex[z]].Date)
-            $('#countryInfo').append('<h1>' + date + '</h1>')
+            $('#countryInfo').append('<h1 data-aos="fade" data-aos-duration="400">' + date + '</h1>')
 
-            $('#countryInfo').append('<div class="table"></div>')
+            $('#countryInfo').append('<div data-aos="fade" data-aos-duration="400" class="table"></div>')
 
             addDescriptionRow(countryCode)
             addTotalRow(data, provinceIndex[z])
@@ -153,6 +153,7 @@ function addFixedHeader(index) {
     }
 
     element.css('position', 'fixed')
+    element.css('z-index', '1')
     element.css('top', '0')
     element.css('padding', '20px')
     element.next().css('padding-top', '102px')
@@ -168,8 +169,8 @@ function getPosition() {
 function showWithoutProvince(data, countryCode) {
     for (let i = (data.length - 1); i >= 0; i--) {
         let date = getDateFormat(data[i].Date)
-        $('#countryInfo').append('<h1>' + date + '</h1>')
-        $('#countryInfo').append('<div class="table"></div>')
+        $('#countryInfo').append('<h1 data-aos="fade" data-aos-duration="400">' + date + '</h1>')
+        $('#countryInfo').append('<div data-aos="fade" data-aos-duration="400" class="table"></div>')
         addDescriptionRow(countryCode)
         addTotalRow(data, i)
         if (i != 0) {
