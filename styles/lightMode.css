@@ -51,7 +51,7 @@ body {
 
 #globalInfo {
     box-shadow: none;
-    background-color: #c9c9c9;
+    background-color: rgb(231, 231, 231);
 }
 
 #globalInfo > div {
@@ -132,21 +132,22 @@ input {
 /* Country Information Generated ------------------------------------------------------------------------------------------ */
 
 #countryInfo {
-    background-color: #dbdbdb;
+    background-color: #fcfcfc;
     color: #9b9b9b;
 }
 
 #countryInfo > h2 {
-    background-color: #d1d1d1;
+    background-color: #f8f8f8;
     color: #9c9c9c;
     border-bottom: 2px solid #a5a5a5;
-}
-
-.table {
-    background-color: #c9c9c9;
     box-shadow: none;
 }
 
+.table {
+    background-color: #e0e0e0;
+    box-shadow: 0 0 5px #cfcfcf;
+}
+
 .table > div {
-    background-color: #e4e4e4;
+    background-color: #ffffff;
 }
