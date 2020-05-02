@@ -9,7 +9,9 @@ function getData() {
         for (let i = 0; i < data.length; i++) {
             let countryName = (data[i].Country).toLowerCase()
             if (input == countryName) {
+                $('.countryBox').remove()
                 addInfoIfCountryChosen(data[i].Country)
+                break
             } else if (input == countryName.slice(0, input.length)) {
                 let countryName = data[i].Country
                 let countryCode = data[i].ISO2
@@ -17,6 +19,8 @@ function getData() {
                 let name = countryName
                 let content = '<div class="countryBox"> <img src="' + image + '"> <p>' + name + '</p> </div>'
                 $('#countryList').append(content)
+            } else {
+                {}
             }
         }
 
