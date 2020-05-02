@@ -431,3 +431,23 @@ button {
         grid-area: activeNew;
     }
 }
+
+/* Loader for API ------------------------------------------------------------------------------------ */
+
+#loaderForAPI {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    opacity: 0;
+    transition: .3s all ease-in-out;
+    pointer-events: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+}
+
+#loaderForAPI > p {
+    color: white;
+}
