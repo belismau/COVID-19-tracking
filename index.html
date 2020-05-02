@@ -5,6 +5,7 @@
         <link rel="icon" href="img/covid.png">
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="./node_modules/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="./node_modules/aos/dist/aos.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
@@ -23,20 +24,20 @@
             </article>
         </section>
 
-        <section id="globalInfo"></section>
-
         <section id="inputContainer">
-            <div>
+            <div data-aos="fade-right" data-aos-duration="400" data-aos-delay="900">
                 <input type="text" list="countryList" id="countryInput" placeholder="What country do you search for?">
                 <button type="submit">
                     <i class="fa fa-search"></i>
                 </button>
                 <div id="borderBottomEffect"></div>
             </div>
-            <div id="countryList"></div>
+            <div id="countryList" data-aos="fade-right" data-aos-duration="400" data-aos-delay="900"></div>
         </section>
 
         <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script src="../node_modules/aos/dist/aos.js"></script>
+        <script> AOS.init(); </script>
         <script type="module" src="script.js"></script>
     </body>
 </html>
