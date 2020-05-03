@@ -7,7 +7,7 @@ function showCountryInfo(name, countryCode) {
     $('#provinceChooser').remove()
     positionList = []
     $.ajax({
-        url: 'https://api.covid19api.com/live/country/' + name + '/status/confirmed',
+        url: 'https://api.covid19api.com/dayone/country/' + name + '',
         dataType: 'JSON'
     }).done(function(data) {
         
@@ -41,7 +41,7 @@ $(document).on('click', '#provinceChooser div p', function() {
     let curProvince = []
 
     $.ajax({
-        url: 'https://api.covid19api.com/live/country/' + curCountry + '/status/confirmed',
+        url: 'https://api.covid19api.com/dayone/country/' + curCountry + '',
         dataType: 'JSON'
     }).done(function(data) {
         for (let i = 0; i < data.length; i++) {
@@ -58,10 +58,12 @@ $(document).on('click', '#provinceChooser div p', function() {
 
             $('#countryInfo').append('<div data-aos="fade" data-aos-duration="400" class="table"></div>')
 
-            addDescriptionRow(curProvince[z].CountryCode)
-            addTotalRow(curProvince, z)
-            if (z != 0) {
-                addNewRowProvince(curProvince, z, (z - 1))
+            if (curProvince[z].Date != '0001-01-01T00:00:00Z') {
+                addDescriptionRow(curProvince[z].CountryCode)
+                addTotalRow(curProvince, z)
+                if (z != 0) {
+                    addNewRowProvince(curProvince, z, (z - 1))
+                }
             }
         }
 
@@ -162,10 +164,13 @@ function showWithoutProvince(data, countryCode) {
         let date = getDateFormat(data[i].Date)
         $('#countryInfo').append('<h1 data-aos="fade" data-aos-duration="400">' + date + '</h1>')
         $('#countryInfo').append('<div data-aos="fade" data-aos-duration="400" class="table"></div>')
-        addDescriptionRow(countryCode)
-        addTotalRow(data, i)
-        if (i != 0) {
-            addNewRow(data, i)
+        
+        if (data[i].Date != '0001-01-01T00:00:00Z') {
+            addDescriptionRow(countryCode)
+            addTotalRow(data, i)
+            if (i != 0) {
+                addNewRow(data, i)
+            }
         }
     }
 }
