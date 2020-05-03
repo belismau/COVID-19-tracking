@@ -1,4 +1,6 @@
 let positionList = []
+let provinceList = []
+let curCountry = ''
 
 function showCountryInfo(name, countryCode) {
     $('#countryInfo').remove()
@@ -8,19 +10,20 @@ function showCountryInfo(name, countryCode) {
         url: 'https://api.covid19api.com/live/country/' + name + '/status/confirmed',
         dataType: 'JSON'
     }).done(function(data) {
-
-        $('<section id="countryInfo"></section>').insertAfter('#inputContainer')
-
+        
         if (data.length == 0) {
             $('#countryInfo').append('<h1 style="display: inline-block"> No Information Available </h1>')
         }
 
-        let provinceList = checkIfProvince(data)
+        curCountry = name
+
+        provinceList = checkIfProvince(data)
 
         if (provinceList.length > 1) {
-            showByProvince(data, countryCode, provinceList)
+            createProvinceChooser(provinceList, data[0].Country)
             scrollTo("#provinceChooser")
         } else {
+            $('<section id="countryInfo"></section>').insertAfter('#inputContainer')
             showWithoutProvince(data, countryCode)
             scrollTo("#countryInfo")
         }
@@ -29,6 +32,45 @@ function showCountryInfo(name, countryCode) {
         console.log(data)
     });
 };
+
+$(document).on('click', '#provinceChooser div p', function() {
+    $('#countryInfo').remove()
+    $('<section id="countryInfo"></section>').insertAfter('#provinceChooser')
+
+    let thisProvinceName = $(this).text()
+    let curProvince = []
+
+    $.ajax({
+        url: 'https://api.covid19api.com/live/country/' + curCountry + '/status/confirmed',
+        dataType: 'JSON'
+    }).done(function(data) {
+        for (let i = 0; i < data.length; i++) {
+            if (data[i].Province == thisProvinceName) {
+                curProvince.push(data[i])
+            } else if (data[0].Country == thisProvinceName && data[i].Province == '') {
+                curProvince.push(data[i])
+            }
+        }
+
+        for (let z = (curProvince.length - 1); z >= 0; z--) {
+            let date = getDateFormat(curProvince[z].Date)
+            $('#countryInfo').append('<h1 data-aos="fade" data-aos-duration="400">' + date + '</h1>')
+
+            $('#countryInfo').append('<div data-aos="fade" data-aos-duration="400" class="table"></div>')
+
+            addDescriptionRow(curProvince[z].CountryCode)
+            addTotalRow(curProvince, z)
+            if (z != 0) {
+                addNewRowProvince(curProvince, z, (z - 1))
+            }
+        }
+
+        scrollTo("#countryInfo")
+
+    }).fail(function(data) {
+        console.log(data)
+    });
+});
 
 function scrollTo(element) {
     $('html, body').animate({
@@ -59,41 +101,6 @@ function checkIfProvince(data) {
     return provinceList
 }
 
-function showByProvince(data, countryCode, provinceList) {
-
-    createProvinceChooser(provinceList, data[0].Country)
-
-    for (let x = 0; x < provinceList.length; x++) {    // For ex. Denmark: ["Faroe Islands", "Greenland", ""]
-
-        if (provinceList[x] != '') {
-            //$('.province:nth-of-type(' + $('.province').length + ')')
-            $('#countryInfo').append('<h2>' + provinceList[x] + '</h2>')
-        } else {
-            $('#countryInfo').append('<h2>' + data[0].Country + '</h2>')
-        }
-
-        let provinceIndex = []
-        for (let i = (data.length - 1); i >= 0; i--) {
-            if (data[i].Province == provinceList[x]) {
-                provinceIndex.push(i)
-            }
-        }
-
-        for (let z = 0; z < provinceIndex.length; z++) {
-            let date = getDateFormat(data[provinceIndex[z]].Date)
-            $('#countryInfo').append('<h1 data-aos="fade" data-aos-duration="400">' + date + '</h1>')
-
-            $('#countryInfo').append('<div data-aos="fade" data-aos-duration="400" class="table"></div>')
-
-            addDescriptionRow(countryCode)
-            addTotalRow(data, provinceIndex[z])
-            addNewRowProvince(data, provinceIndex[z], provinceIndex[z + 1])
-        }
-    }
-    
-    getPosition()
-}
-
 function createProvinceChooser(provinceList, countryName) {
     $('<div id="provinceChooser"></div>').insertAfter('#inputContainer')
     $('#provinceChooser').append('<h2> Choose Province </h2>')
@@ -106,15 +113,6 @@ function createProvinceChooser(provinceList, countryName) {
         }
     }
 }
-
-$(document).on('click', '#provinceChooser div p', function() {
-    let thisP = $(this).text()
-    $("#countryInfo h2").each(function() {
-        if ($(this).text() == thisP) {
-            scrollTo($(this))
-        }
-    })
-});
 
 $(document).on('scroll', function() {
     let scrollTop = $(this).scrollTop()
@@ -157,13 +155,6 @@ function addFixedHeader(index) {
     element.css('top', '0')
     element.css('padding', '20px')
     element.next().css('padding-top', '102px')
-}
-
-function getPosition() {
-    $("#countryInfo h2").each(function() {
-        positionList.push($(this).offset().top)
-    })
-    console.log(positionList)
 }
 
 function showWithoutProvince(data, countryCode) {
@@ -234,24 +225,15 @@ function addNewRow(data, i) {
 }
 
 function addNewRowProvince(data, i, indexNext) {
-
-    try {
-        let newConfirmed = (data[i].Confirmed) - (data[indexNext].Confirmed)
-        let newDeaths = (data[i].Deaths) - (data[indexNext].Deaths)
-        let newRecovered = (data[i].Recovered) - (data[indexNext].Recovered)
-        let newActive = (data[i].Active) - (data[indexNext].Active)
-        $('.table:nth-of-type(' + $('.table').length + ')').append('<div><p> New </p></div>')
-        $('.table:nth-of-type(' + $('.table').length + ')').append('<div><p>' + newConfirmed + '</p></div>')
-        $('.table:nth-of-type(' + $('.table').length + ')').append('<div><p style="color: #e84a4a">' + newDeaths + '</p></div>')
-        $('.table:nth-of-type(' + $('.table').length + ')').append('<div><p style="color: #2f962f">' + newRecovered + '</p></div>')
-        $('.table:nth-of-type(' + $('.table').length + ')').append('<div><p style="color: #d0d045">' + newActive + '</p></div>')
-    } catch {
-        $('.table:nth-of-type(' + $('.table').length + ')').append('<div><p> New </p></div>')
-        $('.table:nth-of-type(' + $('.table').length + ')').append('<div><p>-</p></div>')
-        $('.table:nth-of-type(' + $('.table').length + ')').append('<div><p style="color: #e84a4a">-</p></div>')
-        $('.table:nth-of-type(' + $('.table').length + ')').append('<div><p style="color: #2f962f">-</p></p></div>')
-        $('.table:nth-of-type(' + $('.table').length + ')').append('<div><p style="color: #d0d045">-</p></p></div>')
-    }
+    let newConfirmed = (data[i].Confirmed) - (data[indexNext].Confirmed)
+    let newDeaths = (data[i].Deaths) - (data[indexNext].Deaths)
+    let newRecovered = (data[i].Recovered) - (data[indexNext].Recovered)
+    let newActive = (data[i].Active) - (data[indexNext].Active)
+    $('.table:nth-of-type(' + $('.table').length + ')').append('<div><p> New </p></div>')
+    $('.table:nth-of-type(' + $('.table').length + ')').append('<div><p>' + newConfirmed + '</p></div>')
+    $('.table:nth-of-type(' + $('.table').length + ')').append('<div><p style="color: #e84a4a">' + newDeaths + '</p></div>')
+    $('.table:nth-of-type(' + $('.table').length + ')').append('<div><p style="color: #2f962f">' + newRecovered + '</p></div>')
+    $('.table:nth-of-type(' + $('.table').length + ')').append('<div><p style="color: #d0d045">' + newActive + '</p></div>')
 }
 
 export default showCountryInfo
