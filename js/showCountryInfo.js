@@ -5,6 +5,7 @@ let curCountry = ''
 function showCountryInfo(name, countryCode) {
     $('#countryInfo').remove()
     $('#provinceChooser').remove()
+    $('#cityChooser').remove()
     positionList = []
     $.ajax({
         url: 'https://api.covid19api.com/dayone/country/' + name + '',
@@ -17,7 +18,7 @@ function showCountryInfo(name, countryCode) {
 
         curCountry = name
 
-        provinceList = checkIfProvince(data)
+        provinceList = listName(data, 'Province')
 
         if (provinceList.length > 1) {
             createProvinceChooser(provinceList, data[0].Country)
@@ -35,6 +36,7 @@ function showCountryInfo(name, countryCode) {
 
 $(document).on('click', '#provinceChooser div p', function() {
     $('#countryInfo').remove()
+    $('#cityChooser').remove()
     $('<section id="countryInfo"></section>').insertAfter('#provinceChooser')
 
     let thisProvinceName = $(this).text()
@@ -44,25 +46,123 @@ $(document).on('click', '#provinceChooser div p', function() {
         url: 'https://api.covid19api.com/dayone/country/' + curCountry + '',
         dataType: 'JSON'
     }).done(function(data) {
+
+        if (data[0].City != '') {
+            let cityList = getListName(data, thisProvinceName)
+            console.log(cityList)
+            createCityChooser(cityList)
+            $('#countryInfo').remove()
+            scrollTo("#cityChooser")
+        } else {
+            for (let i = 0; i < data.length; i++) {
+                if (data[i].Province == thisProvinceName) {
+                    curProvince.push(data[i])
+                } else if (data[0].Country == thisProvinceName && data[i].Province == '') {
+                    curProvince.push(data[i])
+                }
+            }
+
+            for (let z = (curProvince.length - 1); z >= 0; z--) {
+                let date = getDateFormat(curProvince[z].Date)
+                $('#countryInfo').append('<h1 data-aos="fade" data-aos-duration="400">' + date + '</h1>')
+
+                $('#countryInfo').append('<div data-aos="fade" data-aos-duration="400" class="table"></div>')
+
+                if (curProvince[z].Date != '0001-01-01T00:00:00Z') {
+                    addDescriptionRow(curProvince[z].CountryCode)
+                    addTotalRow(curProvince, z)
+                    if (z != 0) {
+                        addNewRowProvince(curProvince, z, (z - 1))
+                    }
+                }
+            }
+            scrollTo("#countryInfo")
+        }
+
+    }).fail(function(data) {
+        console.log(data)
+    });
+});
+
+function getListName(data, province) {
+    let listName = []
+    let alreadyInList = true
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].Province == province) {
+            if (listName.length == 0) {
+                listName.push(data[i].City)
+            } else {
+                for (let x = 0; x < listName.length; x++) {
+                    if (listName[x] != data[i].City) {
+                        alreadyInList = false
+                    } else {
+                        alreadyInList = true
+                        break
+                    }
+                }
+                if (alreadyInList == false) {
+                    listName.push(data[i].City)
+                }
+            }
+        }
+    }
+    return listName
+}
+
+function createCityChooser(cityList) {
+    $('<div id="cityChooser"></div>').insertAfter('#provinceChooser')
+    $('#cityChooser').append('<h2> Choose City </h2>')
+
+    for (let i = 0; i < cityList.length; i++) {
+        $('#cityChooser').append('<div> <p>' + cityList[i] + '</p> </div>')
+    }
+}
+
+$(document).on('click', '#cityChooser div p', function() {
+    $('#countryInfo').remove()
+    $('<section id="countryInfo"></section>').insertAfter('#cityChooser')
+
+    let thisCityName = $(this).text()
+    let curCity = []
+
+    $.ajax({
+        url: 'https://api.covid19api.com/dayone/country/' + curCountry + '',
+        dataType: 'JSON'
+    }).done(function(data) {
+
         for (let i = 0; i < data.length; i++) {
-            if (data[i].Province == thisProvinceName) {
-                curProvince.push(data[i])
-            } else if (data[0].Country == thisProvinceName && data[i].Province == '') {
-                curProvince.push(data[i])
+            if (data[i].City == thisCityName) {
+                curCity.push(data[i])
+            } else if (data[0].Country == thisCityName && data[i].City == '') {
+                curCity.push(data[i])
             }
         }
 
-        for (let z = (curProvince.length - 1); z >= 0; z--) {
-            let date = getDateFormat(curProvince[z].Date)
+        console.log(curCity)
+
+        for (let z = (curCity.length - 1); z >= 0; z--) {
+
+            let timesSame = 0
+            for (let x = 10; x >= 0; x--) {
+                if (curCity[x].Date == curCity[x - 1].Date) {
+                    timesSame += 1
+                }
+            }
+
+            console.log(timesSame)
+
+            let date = getDateFormat(curCity[z].Date)
             $('#countryInfo').append('<h1 data-aos="fade" data-aos-duration="400">' + date + '</h1>')
 
             $('#countryInfo').append('<div data-aos="fade" data-aos-duration="400" class="table"></div>')
 
-            if (curProvince[z].Date != '0001-01-01T00:00:00Z') {
-                addDescriptionRow(curProvince[z].CountryCode)
-                addTotalRow(curProvince, z)
+            console.log(curCity)
+
+            if (curCity[z].Date != '0001-01-01T00:00:00Z') {
+                addDescriptionRow(curCity[z].CountryCode)
+                addTotalRow(curCity, z)
                 if (z != 0) {
-                    addNewRowProvince(curProvince, z, (z - 1))
+                    addNewRowProvince(curCity, z, (z - 1))
                 }
             }
         }
@@ -80,15 +180,15 @@ function scrollTo(element) {
     }, 800);
 }
 
-function checkIfProvince(data) {
-    let provinceList = []
+function listName(data, name) {
+    let listName = []
     let alreadyInList = true
     for (let i = 0; i < data.length; i++) {
-        if (provinceList.length == 0) {
-            provinceList.push(data[i].Province)
+        if (listName.length == 0) {
+            listName.push(data[i].Province)
         } else {
-            for (let x = 0; x < provinceList.length; x++) {
-                if (provinceList[x] != data[i].Province) {
+            for (let x = 0; x < listName.length; x++) {
+                if (listName[x] != data[i].Province) {
                     alreadyInList = false
                 } else {
                     alreadyInList = true
@@ -96,11 +196,11 @@ function checkIfProvince(data) {
                 }
             }
             if (alreadyInList == false) {
-                provinceList.push(data[i].Province)
+                listName.push(data[i].Province)
             }
-        }
+        } 
     }
-    return provinceList
+    return listName
 }
 
 function createProvinceChooser(provinceList, countryName) {
