@@ -50,7 +50,7 @@ npm install webpack
 As it says in https://github.com/tapio/live-server, AJAX requests don't work with the ```file://``` protocol due to security restrictions. Therefore, a [server](https://github.com/tapio/live-server) is needed. 
 
 ```
-npm install live-server
+npm install -g live-server
 ```
 
 ## Run
