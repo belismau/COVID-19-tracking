@@ -1,0 +1,27 @@
+{
+  "name": "covid-19-tracking",
+  "version": "1.0.0",
+  "description": "A web app for searching information about the coronavirus in different countries (or within provinces/cities if exists).",
+  "main": "script.js",
+  "dependencies": {
+    "aos": "^2.3.4",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.5.1",
+    "lax.js": "^1.2.5",
+    "webpack": "^4.43.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/belismau/COVID-19-tracking.git"
+  },
+  "author": "BelisMAU",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/belismau/COVID-19-tracking/issues"
+  },
+  "homepage": "https://github.com/belismau/COVID-19-tracking#readme"
+}
