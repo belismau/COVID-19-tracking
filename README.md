@@ -4,14 +4,12 @@ A web app for searching information about the coronavirus in different countries
 
 ## Getting Started
 
-This app is created with Vanilla JS and JQuery, and Ajax is used to retrieve information from an API called [Covid19API](https://covid19api.com/). Therefore, you will need to install JQuery. Also, I am using AOS.js and Lax.js for this project.
+This app is created with Vanilla JS and JQuery, and Ajax is used to retrieve information from an API called [Covid19API](https://covid19api.com/). Therefore, you will need to install JQuery.
 
 ### Built With
 
 * [JQuery](https://jquery.com/) - Framework
 * [AJAX](https://api.jquery.com/jquery.ajax/) - JQuery function
-* [AOS.js](https://michalsnik.github.io/aos/) - Used for animations
-* [Lax.js](https://alexfox.dev/lax.js/) - Used for scroll effects
 
 ### Installation
 
