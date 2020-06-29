@@ -15,36 +15,10 @@ This app is created with Vanilla JS and JQuery, and Ajax is used to retrieve inf
 
 ### Installation
 
-To run this app, you need to install following packages:
-
-JQuery
+To run this app, you can install all local dependencies with the following command:
 
 ```
-npm install jquery
-```
-
-AOS.js
-
-```
-npm install aos
-```
-
-Lax.js
-
-```
-npm install lax.js
-```
-
-All icons used in the project are from [Font Awesome](https://fontawesome.com/)
-
-```
-npm install font-awesome
-```
-
-For the structure, I am using [webpack](https://webpack.js.org/) (module bundler)
-
-```
-npm install webpack
+npm install
 ```
 
 As it says in https://github.com/tapio/live-server, AJAX requests don't work with the ```file://``` protocol due to security restrictions. Therefore, a [server](https://github.com/tapio/live-server) is needed. 
