@@ -5,6 +5,7 @@
   "main": "script.js",
   "dependencies": {
     "aos": "^2.3.4",
+    "express": "^4.17.1",
     "font-awesome": "^4.7.0",
     "jquery": "^3.5.1",
     "lax.js": "^1.2.5",
@@ -12,6 +13,7 @@
   },
   "devDependencies": {},
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

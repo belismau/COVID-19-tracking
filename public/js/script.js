@@ -1,8 +1,8 @@
-import theme from './js/theme.js';
-import getData from './js/getData.js';
-import addInfoIfCountryChosen from './js/getData.js';
-import globalInfo from './js/global.js';
-import validateInput from './js/validateInput.js';
+import theme from './theme.js';
+import getData from './GetData.js';
+import addInfoIfCountryChosen from './GetData.js';
+import globalInfo from './global.js';
+import validateInput from './validateInput.js';
 
 theme()
 globalInfo()

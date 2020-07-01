@@ -132,22 +132,26 @@ input {
 /* Country Information Generated ------------------------------------------------------------------------------------------ */
 
 #countryInfo {
-    background-color: #fcfcfc;
+    background-color: #dddddd;
     color: #9b9b9b;
 }
 
-#countryInfo > h2 {
-    background-color: #f8f8f8;
+#countryInfo > h1 {
     color: #9c9c9c;
-    border-bottom: 2px solid #a5a5a5;
+}
+
+#countryInfo > h2 {
+    background-color: #fafafa;
+    color: #ffffff;
+    border-bottom: 2px solid #ffffff;
     box-shadow: none;
 }
 
 .table {
-    background-color: #e0e0e0;
-    box-shadow: 0 0 5px #cfcfcf;
+    background-color: #d6d6d6;
+    box-shadow: 0 0 5px #c9c9c9;
 }
 
 .table > div {
-    background-color: #ffffff;
+    background-color: #f1f1f1;
 }
