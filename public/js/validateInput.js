@@ -1,4 +1,4 @@
-import removeInfoIfCountryChosen from './getData.js';
+import removeInfoIfCountryChosen from './GetData.js';
 import showCountryInfo from './showCountryInfo.js';
 
 function validateInput() {
